@@ -11,3 +11,29 @@ User registration, user login, Admin login , Session storage,
 url: ``http://0.0.0.0:8080/`` 
 <br>
 admin: ``http://0.0.0.0:8080/admin/``
+
+## Admin Login
+
+email:  
+```
+admin@gmail.com
+```
+<br>
+
+password: 
+```
+admin
+```
+
+## User Login
+
+email:  
+```
+user@gmail.com
+```
+<br>
+
+password: 
+```
+user
+```
