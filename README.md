@@ -14,17 +14,14 @@ admin: ``http://0.0.0.0:8080/admin/``
 
 ## Admin Login
 
-email:  ```admin@gmail.com```
+email:  ``admin@gmail.com``
 <br>
 
-password: ```admin```
+password: ``admin``
 
 ## User Login
 
-email:  ```user@gmail.com```
+email:  ``user@gmail.com``
 <br>
 
-password: 
-```
-``` user ``` 
-```
+password: ``user``
