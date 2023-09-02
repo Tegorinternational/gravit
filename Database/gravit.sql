@@ -35,6 +35,7 @@ CREATE TABLE `admin` (
   `Age` varchar(20) NOT NULL,
   `Mobile` varchar(20) NOT NULL,
   `Password` varchar(50) NOT NULL,
+  `Country` varchar(20) NOT NULL,
   `State` text NOT NULL,
   `City` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -43,8 +44,8 @@ CREATE TABLE `admin` (
 -- Dumping data for table `admin`
 --
 
-INSERT INTO `admin` (`id`, `Name`, `Email`, `Dob`, `Age`, `Mobile`, `Password`, `State`, `City`) VALUES
-(2, 'Arduino Uno', 'sparrowex72@gmail.com', '2023-09-18', '0Y,0M', '8889865223', 'sparrow', 'Madhya Pradesh', 'Gwalior');
+INSERT INTO `admin` (`id`, `Name`, `Email`, `Dob`, `Age`, `Mobile`, `Password`, `Country`, `State`, `City`) VALUES
+(2, 'Arduino Uno', 'sparrowex72@gmail.com', '2023-09-18', '0Y,0M', '8889865223', 'sparrow', 'In', 'Madhya Pradesh', 'Gwalior');
 
 -- --------------------------------------------------------
 
@@ -81,6 +82,7 @@ CREATE TABLE `users` (
   `Age` varchar(20) NOT NULL,
   `Mobile` bigint(20) NOT NULL,
   `Password` varchar(50) NOT NULL,
+  `Country` varchar(50) NOT NULL,
   `State` varchar(50) NOT NULL,
   `City` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -89,8 +91,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `Name`, `Email`, `Dob`, `Age`, `Mobile`, `Password`, `State`, `City`) VALUES
-(1, 'Ashish Taigor', 'ashishtaigor861@gmail.com', '2001-04-06', '22Y,5M', 8435666512, '12345', 'Madhya Pradesh', 'Gwalior');
+INSERT INTO `users` (`id`, `Name`, `Email`, `Dob`, `Age`, `Mobile`, `Password`, `Country`, `State`, `City`) VALUES
+(1, 'Ashish Taigor', 'ashishtaigor861@gmail.com', '2001-04-06', '22Y,5M', 8435666512, '12345', 'In', 'Madhya Pradesh', 'Gwalior');
 
 --
 -- Indexes for dumped tables
