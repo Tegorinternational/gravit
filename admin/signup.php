@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Sign up</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <style>
     label{
       color: #929292;
@@ -54,12 +54,23 @@
                <input required class="form-control" id="password" type="password" name="password" placeholder="Create strong Password">
              </div>
              <div class="mb-3">
+               <label for="state" class="form-label">Country:</label>
+               <select name="country" id="country" class="form-control">
+                 <option value="">-- Country --</option>
+                 <option value="IN">India</option>
+               </select>
+             </div>
+             <div class="mb-3">
                <label for="state" class="form-label">State:</label>
-               <input required class="form-control" id="state" type="text" name="state" placeholder="Select State">
+               <select name="state" id="region" class="form-control">
+                 <option value="">-- State --</option>
+               </select>
              </div>
              <div class="mb-3">
                <label for="city" class="form-label">City:</label>
-               <input required class="form-control" id="city" type="text" name="city" placeholder="Select City">
+               <select name="city" id="city" class="form-control">
+                 <option value="">-- City --</option>
+               </select>
              </div>
            </div>
            
@@ -88,6 +99,63 @@
 <script>
   document.getElementById("dob").addEventListener("change", calculateAge);
 </script>
+
+
+<script>
+  $(document).ready(function() {
+    let selectedCountry = "";
+    let selectedRegion = "";
+    let selectedCity = "";
+    const apiKey = "00000000000000000000000000000000";
+
+    const countryUrl = `https://battuta.medunes.net/api/country/all/?key=${apiKey}&callback=?`;
+
+    $.getJSON(countryUrl, function(data) {
+      $.each(data, function(index, value) {
+        $("#country").append(
+          `<option value="${value.code}">${value.name}</option>`
+        );
+      });
+    });
+
+    $("#country").change(function() {
+      selectedCountry = $("#country option:selected").text();
+      const countryCode = $("#country").val();
+      
+      const regionUrl = `https://battuta.medunes.net/api/region/${countryCode}/all/?key=${apiKey}&callback=?`;
+      $.getJSON(regionUrl, function(data) {
+        $("#region").empty().append('<option value="">Please select your region</option>');
+        $.each(data, function(index, value) {
+          $("#region").append(
+            `<option value="${value.region}">${value.region}</option>`
+          );
+        });
+      });
+    });
+
+    $("#region").on("change", function() {
+      selectedRegion = $("#region option:selected").text();
+      const countryCode = $("#country").val();
+      const region = $("#region").val();
+      
+      const cityUrl = `https://battuta.medunes.net/api/city/${countryCode}/search/?region=${region}&key=${apiKey}&callback=?`;
+      $.getJSON(cityUrl, function(data) {
+        $("#city").empty().append('<option value="">Please select your city</option>');
+        $.each(data, function(index, value) {
+          $("#city").append(
+            `<option value="${value.city}">${value.city}</option>`
+          );
+        });
+      });
+    });
+
+    $("#city").on("change", function() {
+      selectedCity = $("#city option:selected").text();
+    });
+  });
+</script>
+
+  
 </body>
 
 </html>
