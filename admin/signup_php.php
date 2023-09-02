@@ -14,7 +14,7 @@ $state = $_POST['state'];
 $city = $_POST['city'];
 
 $query = "INSERT INTO `admin` (`id`, `Name`, `Email`, `Dob`, `Age`, `Mobile`, `Password`, `Country`, `State`, `City` )
-VALUES (NULL, '$name', '$email', '$dob', '$age', '$mobile', '$password','$country' '$state', '$city')";
+VALUES (NULL, '$name', '$email', '$dob', '$age', '$mobile', '$password','$country', '$state', '$city')";
 
 if (mysqli_query($db, $query)) {
     echo "<script>alert('Registration successful!');</script>";
